@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AVERNO</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="jumpscareVideoDiv"><video src="video/jumpscare.mp4" id="jumpscareVideo" preload="auto"></video></div>
+    <header>
+        <h1>AVERNO</h1>
+    </header>
+    <section>
+        <div class="contentInput">
+            <p>
+                Me quiero comunicar con el espiritu de <input id="nameInput" type="text">
+            </p>
+            
+            <p>Mi pregunta es, </p>
+            <input type="text" id="questionInput">
+            <div id="pentagram">
+                <img src="img/pentagram.png" alt="" onclick="ask()">
+            </div>
+        </div>
+        <div class="contentResult">
+            <p id="response">
+                
+            </p>
+        </div>
+        <div><p>""</p></div>
+    </section>
+    
+    <script type="importmap">
+        {
+          "imports": {
+            "@google/generative-ai": "https://esm.run/@google/generative-ai"
+          }
+        }
+    </script>
+    <script type="module" async src="script/main.js"></script>
+</body>
+</html>
