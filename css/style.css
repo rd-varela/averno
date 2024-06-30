@@ -83,6 +83,7 @@ body section {
   width: 80%;
   max-width: 700px;
   height: 600px;
+  overflow-y: scroll;
 }
 
 #pentagram {
