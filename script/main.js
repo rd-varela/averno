@@ -5,6 +5,7 @@ const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
 let name = document.getElementById('nameInput')
 let question = document.getElementById('questionInput')
 let callCount = 0;
+let firstJumpscare = true;
 let jumpscareVideo = document.getElementById('jumpscareVideo')
 let jumpscareVideoDiv = document.getElementById('jumpscareVideoDiv')
 let jumpscareSound = new Audio("https://github.com/rd-varela/averno/blob/main/sound/jumpscare.mp3?raw=true")
@@ -19,14 +20,17 @@ async function ask() {
     const result = await model.generateContent(prompt);
     const response = await result.response;
     const text = response.text();
-    pText.classList.remove('fade-in'); // Remove the class to reset animation
+    pText.classList.remove('fade-in');
     pText.textContent = text;
     void pText.offsetWidth;
     pText.classList.add('fade-in');
 
     callCount++;
 
-    if (callCount % 3 === 0){
+    if (firstJumpscare && callCount === 3) {
+        jumpscare();
+        firstJumpscare = false;
+    } else if (!firstJumpscare && callCount % 2 === 0 && Math.random() < 0.1) {
         jumpscare();
     }
 }
