@@ -11,8 +11,9 @@ let jumpscareVideoDiv = document.getElementById('jumpscareVideoDiv')
 let jumpscareSound = new Audio("https://github.com/rd-varela/averno/blob/main/sound/jumpscare.mp3?raw=true")
 let pentagramImg = document.getElementById('pentagramImg')
 let thumpSound = new Audio("https://github.com/rd-varela/averno/blob/main/sound/thump.wav?raw=true")
-
 let keystrokeSound = new Audio("https://github.com/rd-varela/averno/blob/main/sound/typewriter.wav?raw=true");
+thumpSound.volume = 0.3;
+keystrokeSound.volume = 0.15;
 
 name.addEventListener('input', playKeystrokeSound);
 question.addEventListener('input', playKeystrokeSound);
