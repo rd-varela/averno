@@ -20,10 +20,47 @@ async function ask() {
     const result = await model.generateContent(prompt);
     const response = await result.response;
     const text = response.text();
+
     pText.classList.remove('fade-in');
-    pText.textContent = text;
     void pText.offsetWidth;
     pText.classList.add('fade-in');
+
+    function scrambleText(text) {
+        let scrambledText = '';
+        const chars = text.split('');
+
+        // Shuffle the characters randomly
+        while (chars.length) {
+            const randomIndex = Math.floor(Math.random() * chars.length);
+            scrambledText += chars[randomIndex];
+            chars.splice(randomIndex, 1);
+        }
+
+        return scrambledText;
+    }
+
+    let scrambledText = scrambleText(text);
+
+     // Scramble the text three times
+     for (let i = 0; i < 17; i++) {
+        let scrambledText = scrambleText(text);
+        pText.textContent = scrambledText;
+
+        // Wait a short time before scrambling again (optional)
+        await new Promise(resolve => setTimeout(resolve, 200)); // Adjust timing if needed
+    }
+
+    //pText.classList.remove('fade-in');
+    //pText.textContent = text;
+    pText.textContent = scrambledText;
+    //void pText.offsetWidth;
+    //pText.classList.add('fade-in');
+
+    // Wait for animation to complete (1s delay as defined in CSS)
+    await new Promise(resolve => setTimeout(resolve, 100));
+
+    // After animation, set the correct text
+    pText.textContent = text;
 
     callCount++;
 
@@ -34,6 +71,20 @@ async function ask() {
         jumpscare();
     }
 }
+
+/*function scrambleText(text) {
+    let scrambledText = '';
+    const chars = text.split('');
+
+    // Shuffle the characters randomly
+    while (chars.length) {
+        const randomIndex = Math.floor(Math.random() * chars.length);
+        scrambledText += chars[randomIndex];
+        chars.splice(randomIndex, 1);
+    }
+
+    return scrambledText;
+}*/
 
 function jumpscare(){
     jumpscareVideoDiv.style.display = 'flex';
