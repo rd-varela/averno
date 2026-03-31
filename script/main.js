@@ -1,5 +1,5 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-const API_KEY = 'AIzaSyCm6EZCxuOKLnO_2WBwED9n9qMwA8qRr1Y';
+const API_KEY = 'AIzaSyBUZjsYbCh-fsX_PQtPO-FDjdV7BtOHEIU';
 const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
 let name = document.getElementById('nameInput')
